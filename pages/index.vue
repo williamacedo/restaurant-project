@@ -1,5 +1,7 @@
 <template>
-  <Recipe />
+  <div class="container">
+    <Recipe />
+  </div>
 </template>
 
 <script lang="ts">
@@ -15,3 +17,12 @@ export default class IndexPage extends Vue {
 
 }
 </script>
+
+<style scoped lang="scss">
+  .container {
+    background-color: #FBF6EA;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+  } 
+</style>
