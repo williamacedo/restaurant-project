@@ -15,6 +15,7 @@
             </template>
         </Row>
         <Button label="Teste" />
+        <Input inputLabel="Teste" :inputValue="value" />
     </div>
 </template>
 
@@ -23,15 +24,17 @@ import { Vue, Component } from 'vue-property-decorator';
 
 import Row from '../components/Row.vue';
 import Button from '../components/Button.vue';
+import Input from '../components/Input.vue';
 
 @Component({
     components: {
         Row,
-        Button
+        Button,
+        Input
     }
 })
 export default class Recipe extends Vue {
-
+    private value = '';
 }
 </script>
 
