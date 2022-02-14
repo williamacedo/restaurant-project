@@ -14,6 +14,7 @@
                 <p class="recipe-row__price">5.50</p>
             </template>
         </Row>
+        <Button label="Teste" />
     </div>
 </template>
 
@@ -21,10 +22,12 @@
 import { Vue, Component } from 'vue-property-decorator';
 
 import Row from '../components/Row.vue';
+import Button from '../components/Button.vue';
 
 @Component({
     components: {
-        Row
+        Row,
+        Button
     }
 })
 export default class Recipe extends Vue {
