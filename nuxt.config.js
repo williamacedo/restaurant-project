@@ -48,6 +48,12 @@ export default {
     baseURL: '/'
   },
 
+  styleResources: {
+    scss: [
+      '~assets/main.scss'
+    ]
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     loaders: {

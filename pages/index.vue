@@ -18,11 +18,25 @@ export default class IndexPage extends Vue {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .container {
     background-color: #FBF6EA;
     position: relative;
+    width: 100%;
     height: 100vh;
-    width: 100vw;
   } 
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    margin: 0;
+    padding: 0;
+  }
+
+  p {
+    margin: 0;
+  }
 </style>

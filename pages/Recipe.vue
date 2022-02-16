@@ -1,21 +1,20 @@
 <template>
     <div>
-        <Row>
+        <Heading text="Cardápio" />
+        <Row v-for="product in recipeData" :key="product.id">
             <template #number>
-                <p class="recipe-row__number">01</p>
+                <p class="recipe-row__number">{{ product.number }}</p>
             </template>
             <template #left-top>
-                <p class="recipe-row__title">Batata Frita</p>
+                <p class="recipe-row__title">{{ product.title }}</p>
             </template>
             <template #left-bottom>
-                <p class="recipe-row__description">Lorem Ipsum</p>
+                <p class="recipe-row__description">{{ product.description }}</p>
             </template>
             <template #right-text>
-                <p class="recipe-row__price">5.50</p>
+                <p class="recipe-row__price">{{ product.price }}</p>
             </template>
         </Row>
-        <Button label="Teste" />
-        <Input inputLabel="Teste" :inputValue="value" />
     </div>
 </template>
 
@@ -24,22 +23,52 @@ import { Vue, Component } from 'vue-property-decorator';
 
 import Row from '../components/Row.vue';
 import Button from '../components/Button.vue';
-import Input from '../components/Input.vue';
+import Heading from '../components/Heading.vue';
 
 @Component({
     components: {
+        Heading,
         Row,
-        Button,
-        Input
+        Button
     }
 })
 export default class Recipe extends Vue {
-    private value = '';
+    private recipeData = [
+        {
+            id: 1,
+            number: '01',
+            title: 'Batata Frita',
+            description: '300g de batata frita com 50g de queijo cheddar.',
+            price: 5.50
+        },
+        {
+            id: 2,
+            number: '02',
+            title: 'Hamburger',
+            description: 'Pão, hamburger, queijo, tomate e alface.',
+            price: 10.00
+        },
+    ]
 }
 </script>
 
 <style scoped lang="scss">
-    .recipe-row__text {
-        color: #CCAE52;
+    .recipe-row {
+        &__number {
+            color: #CCAE52;
+            font-size: 53px;
+        }
+        &__title {
+            color: #5B2D1F;
+            font-size: 30px;
+        }
+        &__description {
+            color: #CCAE52;
+            font-size: 15px;
+        }
+        &__price {
+            color: #A83A2C;
+            font-size: 53px;
+        }
     }
 </style>

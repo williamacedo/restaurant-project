@@ -49,7 +49,6 @@ export default class Row extends Vue {
     .row {
         display: flex;
         padding: 17px 45px 0 15px;
-        width: 100%;
         justify-content: space-between;
         &-item {
             display: flex;
