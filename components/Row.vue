@@ -48,8 +48,9 @@ export default class Row extends Vue {
 <style scoped lang="scss">
     .row {
         display: flex;
-        padding: 17px 45px 0 15px;
+        margin: 17px 45px 14px 15px;
         justify-content: space-between;
+        border-bottom: 2px dashed #A83A2C;
         &-item {
             display: flex;
             &__number {
@@ -61,6 +62,7 @@ export default class Row extends Vue {
             }
             &__right {
                 display: flex;
+                align-items: center;
                 &--icon {
                     width: 25px;
                     height: 25px;

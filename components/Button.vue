@@ -29,11 +29,13 @@ export default class Button extends Vue {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
     .button {
         width: 200px;
         height: 100px;
         border: none;
         border-radius: 20px;
+        font-size: 30px;
+        cursor: pointer;
     }
 </style>

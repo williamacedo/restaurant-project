@@ -1,6 +1,8 @@
 <template>
-    <div>
-        <Heading text="Cardápio" />
+    <div class="container">
+        <div class="recipe-heading__content">
+            <Heading text="Cardápio" />
+        </div>
         <Row v-for="product in recipeData" :key="product.id">
             <template #number>
                 <p class="recipe-row__number">{{ product.number }}</p>
@@ -15,6 +17,9 @@
                 <p class="recipe-row__price">{{ product.price }}</p>
             </template>
         </Row>
+        <div class="recipe-button__content">
+            <Button label="Novo Item" @button-action="registerProduct" />
+        </div>
     </div>
 </template>
 
@@ -49,26 +54,46 @@ export default class Recipe extends Vue {
             price: 10.00
         },
     ]
+
+    public registerProduct() {
+        this.$router.push({ path: '/register' });
+    }
 }
 </script>
 
 <style scoped lang="scss">
-    .recipe-row {
-        &__number {
-            color: #CCAE52;
-            font-size: 53px;
+    .recipe {
+        &-heading {
+            &__content {
+                display: flex;
+                justify-content: center;
+                padding-top: 57px;
+            }
         }
-        &__title {
-            color: #5B2D1F;
-            font-size: 30px;
+        &-row {
+            &__number {
+                color: #CCAE52;
+                font-size: 53px;
+            }
+            &__title {
+                color: #5B2D1F;
+                font-size: 30px;
+            }
+            &__description {
+                color: #CCAE52;
+                font-size: 15px;
+            }
+            &__price {
+                color: #A83A2C;
+                font-size: 53px;
+            }    
         }
-        &__description {
-            color: #CCAE52;
-            font-size: 15px;
-        }
-        &__price {
-            color: #A83A2C;
-            font-size: 53px;
+        &-button {
+            &__content {
+                display: flex;
+                justify-content: center;
+                padding-top: 78px;
+            }
         }
     }
 </style>
