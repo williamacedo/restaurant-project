@@ -1,4 +1,4 @@
-import { render } from '@testing-library/vue';
+import { render, fireEvent, findByTestId } from '@testing-library/vue';
 
 import Row from './Row.vue';
 
@@ -18,4 +18,12 @@ describe('<Row />', () => {
         getByText('Lorem');
         getByText('5.50');
     });
+
+    it('should emit event when click in edit svg', async () => {
+        const { getByTestId, emitted } = render(Row);
+
+        fireEvent.click(getByTestId('edit-test'));
+
+        expect(emitted()['edit-action']).toBeTruthy();
+    })
 });

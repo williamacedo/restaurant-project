@@ -19,7 +19,9 @@
                     <slot name="right-text" />
                 </div>
                 <div class="row-item__right--icon">
-                    <EditIcon />
+                    <button @click="goToEditPage" data-testid="edit-test">
+                        <EditIcon />
+                    </button>
                 </div>
                 <div class="row-item__right--icon">
                     <RemoveIcon />
@@ -29,10 +31,9 @@
     </div>
 </template>
 
-<script>
-import { Vue, Component } from 'vue-property-decorator';
-import  RemoveIcon from '../assets/icons/remove.svg';
-import  EditIcon from '../assets/icons/edit.svg';
+<script lang="ts">
+import { Vue, Component, Emit } from 'vue-property-decorator';
+import { RemoveIcon, EditIcon } from '../assets/icons';
 
 @Component({
     components: {
@@ -41,7 +42,10 @@ import  EditIcon from '../assets/icons/edit.svg';
     }
 })
 export default class Row extends Vue {
-
+    @Emit('edit-action')
+    public goToEditPage(productId: string) {
+        return productId;
+    }
 }
 </script>
 
@@ -67,6 +71,7 @@ export default class Row extends Vue {
                     width: 25px;
                     height: 25px;
                     margin-left: 22px;
+                    cursor: pointer;
                 }
             }
         }
