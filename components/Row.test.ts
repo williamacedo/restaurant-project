@@ -1,4 +1,4 @@
-import { render, fireEvent, findByTestId } from '@testing-library/vue';
+import { render, fireEvent } from '@testing-library/vue';
 
 import Row from './Row.vue';
 

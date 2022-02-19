@@ -33,9 +33,7 @@ export default class Button extends Vue {
     .button {
         width: 200px;
         height: 100px;
-        border: none;
         border-radius: 20px;
         font-size: 30px;
-        cursor: pointer;
     }
 </style>

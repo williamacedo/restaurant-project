@@ -39,4 +39,10 @@ export default class IndexPage extends Vue {
   p {
     margin: 0;
   }
+
+  button {
+    border: none;
+    cursor: pointer;
+    background: none;
+  }
 </style>

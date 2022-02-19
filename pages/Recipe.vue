@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <Heading text="Cardápio" />
-        <Row v-for="product in recipeData" :key="product.id">
+        <Row v-for="product in recipeData" :key="product.id" @edit-action="editProduct(product.id)">
             <template #number>
                 <p class="recipe-row__number">{{ product.number }}</p>
             </template>
@@ -38,14 +38,14 @@ import Heading from '../components/Heading.vue';
 export default class Recipe extends Vue {
     private recipeData = [
         {
-            id: 1,
+            id: '1',
             number: '01',
             title: 'Batata Frita',
             description: '300g de batata frita com 50g de queijo cheddar.',
             price: 5.50
         },
         {
-            id: 2,
+            id: '2',
             number: '02',
             title: 'Hamburger',
             description: 'Pão, hamburger, queijo, tomate e alface.',
@@ -55,6 +55,10 @@ export default class Recipe extends Vue {
 
     public registerProduct() {
         this.$router.push({ path: '/register' });
+    }
+
+    public editProduct(id: string) {
+       this.$router.push({ path: '/edit', query: { productId: id } }); 
     }
 }
 </script>
