@@ -22,6 +22,7 @@ export default class Input extends Vue {
     .input {
         &-label {
             font-size: 30px;
+            line-height: 35px;
         }
         &-value {
             width: 560px;

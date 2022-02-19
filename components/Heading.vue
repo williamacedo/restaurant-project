@@ -16,5 +16,7 @@ export default class Heading extends Vue {
 .heading {
     font-size: 80px;
     font-weight: 400;
+    text-align: center;
+    padding-top: 57px;
 }
 </style>

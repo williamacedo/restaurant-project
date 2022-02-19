@@ -1,8 +1,6 @@
 <template>
     <div class="container">
-        <div class="recipe-heading__content">
-            <Heading text="Cardápio" />
-        </div>
+        <Heading text="Cardápio" />
         <Row v-for="product in recipeData" :key="product.id">
             <template #number>
                 <p class="recipe-row__number">{{ product.number }}</p>
@@ -63,13 +61,6 @@ export default class Recipe extends Vue {
 
 <style scoped lang="scss">
     .recipe {
-        &-heading {
-            &__content {
-                display: flex;
-                justify-content: center;
-                padding-top: 57px;
-            }
-        }
         &-row {
             &__number {
                 color: #CCAE52;
