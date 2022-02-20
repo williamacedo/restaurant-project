@@ -11,11 +11,12 @@
     "lint": "yarn lint:js",
     "lintfix": "yarn lint:js --fix",
     "test": "jest",
-    "back:serve": "json-server --watch db.json"
+    "back:serve": "json-server --watch db.json --port=8000"
   },
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.17.2",
     "@nuxtjs/axios": "^5.13.6",
+    "axios": "^0.26.0",
     "core-js": "^3.19.3",
     "json-server": "^0.17.0",
     "nuxt": "^2.15.8",
@@ -35,6 +36,7 @@
     "@nuxtjs/eslint-module": "^3.0.2",
     "@testing-library/jest-dom": "^5.11.1",
     "@testing-library/vue": "^5.0.4",
+    "@types/axios": "^0.14.0",
     "@types/jest": "^27.4.0",
     "@vue/compiler-dom": "^3.2.31",
     "@vue/test-utils": "^1.3.0",

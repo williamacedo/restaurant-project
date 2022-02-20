@@ -1,9 +1,10 @@
 <template>
     <div class="container">
         <Heading text="Cardápio" />
-        <Row v-for="product in recipeData" :key="product.id" @edit-action="editProduct(product.id)">
+        <div class="recipe-loading" v-if="isLoading">Carregando...</div>
+        <Row v-for="product in recipeData" :key="product.id" @edit-action="editProduct(product.id)" v-else>
             <template #number>
-                <p class="recipe-row__number">{{ product.number }}</p>
+                <p class="recipe-row__number">01</p>
             </template>
             <template #left-top>
                 <p class="recipe-row__title">{{ product.title }}</p>
@@ -16,13 +17,14 @@
             </template>
         </Row>
         <div class="recipe-button__content">
-            <Button label="Novo Item" @button-action="registerProduct" />
+            <Button label="Novo Item" @button-action="registerProduct" data-testid="new-item-test" />
         </div>
     </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import axios from 'axios';
 
 import Row from '../components/Row.vue';
 import Button from '../components/Button.vue';
@@ -36,22 +38,25 @@ import Heading from '../components/Heading.vue';
     }
 })
 export default class Recipe extends Vue {
-    private recipeData = [
-        {
-            id: '1',
-            number: '01',
-            title: 'Batata Frita',
-            description: '300g de batata frita com 50g de queijo cheddar.',
-            price: 5.50
-        },
-        {
-            id: '2',
-            number: '02',
-            title: 'Hamburger',
-            description: 'Pão, hamburger, queijo, tomate e alface.',
-            price: 10.00
-        },
-    ]
+    private isError = false;
+    private isLoading = true;
+    private recipeData: any = []
+
+    private async fetchRecipe() {
+        this.isLoading = true;
+        try{
+            const result = await axios.get('http://localhost:8000/products');
+            this.recipeData = result.data; 
+        } catch {
+            this.isError = true;
+        } finally {
+            this.isLoading = false;
+        }
+    }
+
+    private created() {
+        this.fetchRecipe();
+    }
 
     public registerProduct() {
         this.$router.push({ path: '/register' });
@@ -65,6 +70,11 @@ export default class Recipe extends Vue {
 
 <style scoped lang="scss">
     .recipe {
+        &-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         &-row {
             &__number {
                 color: #CCAE52;
