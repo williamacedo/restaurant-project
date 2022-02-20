@@ -23,7 +23,7 @@ export default class IndexPage extends Vue {
     background-color: #FBF6EA;
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: auto;
   } 
 
   body {

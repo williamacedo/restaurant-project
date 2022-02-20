@@ -10,13 +10,13 @@
                 label="Cancelar" 
                 class="form-footer__button" 
             />
-            <Button label="Salvar" class="form-footer__button" />
+            <Button label="Salvar" class="form-footer__button" @button-action="saveData" />
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue, Component, Emit } from 'vue-property-decorator';
 import Button from '../components/Button.vue';
 
 @Component({
@@ -25,7 +25,10 @@ import Button from '../components/Button.vue';
     }
 })
 export default class Form extends Vue {
-
+    @Emit('save-data')
+    public saveData() {
+        return;
+    }
 }
 </script>
 

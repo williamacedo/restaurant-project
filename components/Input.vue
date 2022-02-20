@@ -1,7 +1,12 @@
 <template>
     <div class="input">
-        <p class="input-label">{{ inputLabel }}</p>
-        <input v-model="inputValue" class="input-value" data-testid="input-test" />
+        <p class="input-label">{{ label }}</p>
+        <input 
+            :value="value" 
+            @input="handleInput" 
+            class="input-value" 
+            data-testid="input-test"
+        />
     </div>
 </template>
 
@@ -11,10 +16,15 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 @Component
 export default class Input extends Vue {
     @Prop({ type: String, required: true })
-    private inputLabel!: string;
+    private label!: string;
 
     @Prop({ type: String, required: true })
-    private inputValue!: string;
+    private value!: string;  
+
+    private handleInput(event: Event) {
+        const input = event.target as HTMLInputElement;
+        this.$emit('input', input.value);
+    }
 }
 </script>
 
@@ -22,7 +32,6 @@ export default class Input extends Vue {
     .input {
         &-label {
             font-size: 30px;
-            line-height: 35px;
         }
         &-value {
             width: 560px;

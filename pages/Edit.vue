@@ -3,12 +3,12 @@
         <Heading text="Editar Item" />
         <Form>
             <div class="edit-form__item">
-                <Input inputLabel="ID" :inputValue="productId" class="edit-form__item--input" />
-                <Input inputLabel="Titulo" :inputValue="productTitle" class="edit-form__item--input" />
+                <Input label="ID" v-model="productId" class="edit-form__item--input" />
+                <Input label="Titulo" v-model="productTitle" class="edit-form__item--input" />
             </div>
             <div class="edit-form__item">
-                <Input inputLabel="Descrição" :inputValue="productDescription" class="edit-form__item--input" />
-                <Input inputLabel="Valor" :inputValue="productPrice" class="edit-form__item--input" />
+                <Input label="Descrição" v-model="productDescription" class="edit-form__item--input" />
+                <Input label="Valor" v-model="productPrice" class="edit-form__item--input" />
             </div>
         </Form>
     </div>

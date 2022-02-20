@@ -98,6 +98,7 @@ export default class Recipe extends Vue {
                 display: flex;
                 justify-content: center;
                 padding-top: 78px;
+                padding-bottom: 153px;
             }
         }
     }

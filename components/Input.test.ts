@@ -6,8 +6,8 @@ describe('<Input />', () => {
     it('should render label and change input value', () => {
         const { getByText, getByTestId } = render(Input, {
             props: {
-                inputLabel: 'Lorem',
-                inputValue: ''
+                label: 'Lorem',
+                value: ''
             }
         });
 
