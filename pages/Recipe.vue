@@ -2,7 +2,13 @@
     <div class="container">
         <Heading text="Cardápio" />
         <div class="recipe-loading" v-if="isLoading">Carregando...</div>
-        <Row v-for="product in recipeData" :key="product.id" @edit-action="editProduct(product.id)" v-else>
+        <Row 
+            v-for="product in recipeData" 
+            :key="product.id" 
+            @edit-action="editProduct(product.id)" 
+            @remove-action="removeProduct(product.id)"
+            v-else
+        >
             <template #number>
                 <p class="recipe-row__number">01</p>
             </template>
@@ -64,6 +70,15 @@ export default class Recipe extends Vue {
 
     public editProduct(id: string) {
        this.$router.push({ path: '/edit', query: { productId: id } }); 
+    }
+
+    public async removeProduct(id: string) {
+        try{
+            await axios.delete(`http://localhost:8000/products/${id}`);
+            this.fetchRecipe();
+        } catch {
+            this.isError = true;
+        }  
     }
 }
 </script>

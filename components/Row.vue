@@ -24,7 +24,9 @@
                     </button>
                 </div>
                 <div class="row-item__right--icon">
-                    <RemoveIcon />
+                    <button @click="removeAction" data-testid="remove-test">
+                        <RemoveIcon />
+                    </button>
                 </div>
             </div>
         </div>
@@ -44,6 +46,11 @@ import { RemoveIcon, EditIcon } from '../assets/icons';
 export default class Row extends Vue {
     @Emit('edit-action')
     public goToEditPage(productId: string) {
+        return productId;
+    }
+
+    @Emit('remove-action')
+    public removeAction(productId: string) {
         return productId;
     }
 }

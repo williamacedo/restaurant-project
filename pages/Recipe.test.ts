@@ -1,7 +1,9 @@
 const axiosMock = jest.fn();
+const deleteMock = jest.fn();
 jest.mock('axios', () => {
     return {
-      get: axiosMock
+      get: axiosMock,
+      delete: deleteMock
     };
 });
 
@@ -52,5 +54,21 @@ describe('<Recipe />', () => {
         fireEvent.click(button);
 
         expect(pushMock).toBeCalledWith({ path: '/register' });
+    })
+
+    it('should delete product when click in remove button', async () => {
+        axiosMock.mockResolvedValueOnce({ data: recipeData });
+
+        const { findAllByTestId } = render(Recipe, {
+            mocks: {
+                $router: { push: pushMock }
+            }
+        });  
+
+        const button = await findAllByTestId('remove-test');
+
+        await fireEvent.click(button[0]);
+
+        expect(deleteMock).toBeCalledWith("http://localhost:8000/products/1");
     })
 });

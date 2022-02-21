@@ -29,12 +29,6 @@
       "description": "Lorem Ipsum",
       "price": "5.50",
       "id": 5
-    },
-    {
-      "title": "Hambuger",
-      "description": "Lorem Ipsum",
-      "price": "5.50",
-      "id": 6
     }
   ]
 }
