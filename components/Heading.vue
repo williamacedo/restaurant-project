@@ -8,7 +8,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 @Component
 export default class Heading extends Vue {
     @Prop({ type: String, required: true })
-    private text!: string;
+    public text!: string;
 }
 </script>
 

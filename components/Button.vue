@@ -15,7 +15,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 @Component
 export default class Button extends Vue {
     @Prop({ type: String, required: true })
-    private label!: string;
+    public label!: string;
 
     @Prop({ type: String, default: '#A83A2C' })
     private bgColor!: string;

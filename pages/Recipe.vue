@@ -44,9 +44,9 @@ import Heading from '../components/Heading.vue';
     }
 })
 export default class Recipe extends Vue {
-    private isError = false;
-    private isLoading = true;
-    private recipeData: any = []
+    public isError = false;
+    public isLoading = true;
+    public recipeData: any = []
 
     private async fetchRecipe() {
         this.isLoading = true;
@@ -60,7 +60,7 @@ export default class Recipe extends Vue {
         }
     }
 
-    private created() {
+    public created() {
         this.fetchRecipe();
     }
 

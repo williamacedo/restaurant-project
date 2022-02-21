@@ -17,15 +17,15 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 @Component
 export default class Input extends Vue {
     @Prop({ type: String, required: true })
-    private label!: string;
+    public label!: string;
 
     @Prop({ type: String, default: '' })
-    private value!: string; 
+    public value!: string; 
     
     @Prop({ type: Boolean, default: false })
-    private disabled!: boolean; 
+    public disabled!: boolean; 
 
-    private handleInput(event: Event) {
+    public handleInput(event: Event) {
         const input = event.target as HTMLInputElement;
         this.$emit('input', input.value);
     }
