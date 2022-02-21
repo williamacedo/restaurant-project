@@ -6,6 +6,7 @@
             @input="handleInput" 
             class="input-value" 
             data-testid="input-test"
+            :disabled="disabled"
         />
     </div>
 </template>
@@ -18,8 +19,11 @@ export default class Input extends Vue {
     @Prop({ type: String, required: true })
     private label!: string;
 
-    @Prop({ type: String, required: true })
-    private value!: string;  
+    @Prop({ type: String, default: '' })
+    private value!: string; 
+    
+    @Prop({ type: Boolean, default: false })
+    private disabled!: boolean; 
 
     private handleInput(event: Event) {
         const input = event.target as HTMLInputElement;
