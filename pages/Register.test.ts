@@ -5,13 +5,19 @@ jest.mock('axios', () => {
     };
 });
 
+const pushMock = jest.fn();
+
 import { render, fireEvent } from '@testing-library/vue';
 import Register from './Register.vue';
 
 describe('<Register />', () => {
     it('should call save data and call axios mock', async () => {
         axiosMock.mockResolvedValueOnce({ data: {} });
-        const { getAllByTestId, getByText } = render(Register);
+        const { getAllByTestId, getByText } = render(Register, {
+            mocks: {
+                $router: { push: pushMock }
+            }
+        });
 
         const input = getAllByTestId('input-test') as HTMLInputElement[];
 

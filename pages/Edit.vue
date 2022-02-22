@@ -3,7 +3,7 @@
         <Heading text="Editar Item" />
         <Form @save-data="updateData">
             <div class="edit-form__item">
-                <Input label="ID" :value="$route.query.productId" class="edit-form__item--input" disabled />
+                <Input label="ID" :value="computedProductId" class="edit-form__item--input" disabled />
                 <Input label="Titulo" v-model="productTitle" class="edit-form__item--input" />
             </div>
             <div class="edit-form__item">
@@ -28,12 +28,28 @@ import Input from '../components/Input.vue';
     }
 })
 export default class Edit extends Vue {
-    private productId!: string;
-    private productTitle!: string;
-    private productDescription!: string;
-    private productPrice!: string;
+    public productId!: number;
+    private productTitle: string = '';
+    private productDescription: string = '';
+    private productPrice: string = '';
+    private isLoading: boolean = true;
+    private isError: boolean = false;
 
-    private updateData() {
+    private async fetchProduct() {
+        try{
+            const result = await axios.get(`http://localhost:8000/products/${this.$route.query.productId}`); 
+            const product = result.data;
+            this.productTitle = product.title;
+            this.productDescription = product.description;
+            this.productPrice = product.price;
+        } catch {
+            this.isError = true;
+        } finally {
+            this.isLoading = false;
+        }
+    }
+
+    public updateData() {
         axios.put(`http://localhost:8000/products/${this.$route.query.productId}`, {
             title: this.productTitle,
             description: this.productDescription,
@@ -43,6 +59,14 @@ export default class Edit extends Vue {
         }).catch(error => {
             console.log(error);
         });
+    }
+
+    public created() {
+        this.fetchProduct();
+    }
+
+    public get computedProductId() {
+        return this.$route.query.productId.toString();
     }
 }
 </script>

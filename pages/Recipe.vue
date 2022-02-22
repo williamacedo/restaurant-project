@@ -4,7 +4,7 @@
         <div class="recipe-loading" v-if="isLoading">Carregando...</div>
         <div v-else>
             <div class="recipe-select__content">
-                <select @change="handleOrder">
+                <select @change="handleOrder" data-testid="select-test">
                     <option value="number">Númerico</option>
                     <option value="letter">Alfabético</option>
                 </select>

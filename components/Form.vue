@@ -9,6 +9,7 @@
                 textColor="#A83A2C" 
                 label="Cancelar" 
                 class="form-footer__button" 
+                @button-action="cancelAction"
             />
             <Button label="Salvar" class="form-footer__button" @button-action="saveData" />
         </div>
@@ -28,6 +29,10 @@ export default class Form extends Vue {
     @Emit('save-data')
     public saveData() {
         return;
+    }
+
+    public cancelAction() {
+        this.$router.push('/');
     }
 }
 </script>

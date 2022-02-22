@@ -14,15 +14,15 @@ import Recipe from './Recipe.vue';
 const recipeData = [
     {
         id: 1,
-        title: "Batata Frita",
-        description: "300g de batata frita com 50g de queijo cheddar.",
-        price: 5.50
-    },
-    {
-        id: 2,
         title: "Hamburger",
         description: "Pão, hamburger, queijo, tomate e alface.",
         price: 10.00
+    },
+    {
+        id: 2,
+        title: "Batata Frita",
+        description: "300g de batata frita com 50g de queijo cheddar.",
+        price: 5.50
     },
 ]
 

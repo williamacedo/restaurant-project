@@ -1,18 +1,22 @@
-const axiosMock = jest.fn();
+const axiosPutMock = jest.fn();
+const axiosGetMock = jest.fn();
 jest.mock('axios', () => {
     return {
-      put: axiosMock
+      get: axiosGetMock,
+      put: axiosPutMock
     };
 });
 
 import { render, fireEvent } from '@testing-library/vue';
 import Edit from './Edit.vue';
 
+const pushMock = jest.fn();
+
 describe('<Edit />', () => {
     it('should call save data and call axios mock', async () => {
-        axiosMock.mockResolvedValueOnce({ data: {} });
+        axiosPutMock.mockResolvedValueOnce({ data: {} });
         const { getAllByTestId, getByText } = render(Edit, {
-            mocks: { $route: { query: { productId: 1 } } }
+            mocks: { $route: { query: { productId: 1 } }, $router: { push: pushMock } }
         });
 
         const input = getAllByTestId('input-test') as HTMLInputElement[];
@@ -25,6 +29,6 @@ describe('<Edit />', () => {
 
         await fireEvent.click(button);
 
-        expect(axiosMock).toHaveBeenCalledWith("http://localhost:8000/products/1", {"description": "description", "price": "5.50", "title": "title"});
+        expect(axiosPutMock).toHaveBeenCalledWith("http://localhost:8000/products/1", {"description": "description", "price": "5.50", "title": "title"});
     });
 });
