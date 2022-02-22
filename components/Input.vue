@@ -42,8 +42,11 @@ export default class Input extends Vue {
             height: 95px;
             border: none;
             border-radius: 10px;
-            background-color: '#FFFFFF';
+            background-color: #FFFFFF;
             font-size: 30px;
+            &:disabled {
+                background-color: #F3F3F4;
+            }
         }
     }
 </style>

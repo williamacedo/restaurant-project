@@ -43,6 +43,7 @@ export default class Form extends Vue {
             display: flex;
             justify-content: flex-end;
             padding-top: 78px;
+            padding-right: 78px;
             &__button:first-child {
                 margin-right: 16px;
             }

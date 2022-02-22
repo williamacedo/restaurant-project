@@ -10,7 +10,7 @@
             v-else
         >
             <template #number>
-                <p class="recipe-row__number">01</p>
+                <p class="recipe-row__number">{{ formartNumber(product.id) }}</p>
             </template>
             <template #left-top>
                 <p class="recipe-row__title">{{ product.title }}</p>
@@ -35,6 +35,7 @@ import axios from 'axios';
 import Row from '../components/Row.vue';
 import Button from '../components/Button.vue';
 import Heading from '../components/Heading.vue';
+import { Products } from '../types/product';
 
 @Component({
     components: {
@@ -46,13 +47,14 @@ import Heading from '../components/Heading.vue';
 export default class Recipe extends Vue {
     public isError = false;
     public isLoading = true;
-    public recipeData: any = []
+    public recipeData: Products[] = []
 
     private async fetchRecipe() {
         this.isLoading = true;
         try{
             const result = await axios.get('http://localhost:8000/products');
-            this.recipeData = result.data; 
+            const data = result.data.sort((a: Products, b: Products) => a.id - b.id);
+            this.recipeData = data; 
         } catch {
             this.isError = true;
         } finally {
@@ -79,6 +81,10 @@ export default class Recipe extends Vue {
         } catch {
             this.isError = true;
         }  
+    }
+
+    public formartNumber(productId: number) {
+        return productId < 10 ? '0' + productId : productId;
     }
 }
 </script>
