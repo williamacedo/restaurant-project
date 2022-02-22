@@ -22,9 +22,13 @@ $ yarn test
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
-## Special Directories
+## Directories
 
 - assets 
 - components
 - pages
 - types
+
+## Screenshots
+
+![image](https://user-images.githubusercontent.com/26313289/155209784-cff3b4b6-b274-46db-9e08-1ffef7c541c0.png)
